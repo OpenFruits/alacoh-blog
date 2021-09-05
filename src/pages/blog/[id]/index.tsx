@@ -8,11 +8,13 @@ const BlogId: VFC<any> = ({ blog }) => {
     <main>
       <h1>{blog.title}</h1>
       <p>{formatDate(blog.publishedAt)}</p>
+      <p>{blog.category.name}</p>
       <div
         dangerouslySetInnerHTML={{
           __html: `${blog.body}`,
         }}
       />
+      <p>{blog.writer.name}</p>
       <Link href="/">
         <a>ホーム</a>
       </Link>
