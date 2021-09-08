@@ -1,6 +1,7 @@
 import { VFC, ReactNode } from "react";
-import { Footer } from "./Footer";
+import { styled } from "src/styles/stitches.config";
 import { Header } from "./Header";
+import { Footer } from "./Footer";
 
 type Props = {
   children: ReactNode;
@@ -8,10 +9,31 @@ type Props = {
 
 export const BaseLayout: VFC<Props> = (props) => {
   return (
-    <div>
+    <Container>
       <Header />
-      {props.children}
+      <SpaceY />
+      <Main>{props.children}</Main>
+      <SpaceY />
       <Footer />
-    </div>
+    </Container>
   );
 };
+
+const Container = styled("div", {
+  minHeight: "100vh",
+  position: "relative",
+});
+
+const Main = styled("main", {
+  display: "grid",
+  gap: "2rem",
+  paddingY: "2rem",
+  marginX: "auto",
+  marginBottm: "2rem",
+  maxWidth: "768px",
+});
+
+// footerがfixedのため余白を取る
+const SpaceY = styled("div", {
+  paddingY: "3rem",
+});

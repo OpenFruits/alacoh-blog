@@ -2,10 +2,11 @@ import { VFC } from "react";
 import Link from "next/link";
 import { client } from "src/libs/client";
 import { formatDate } from "src/libs/formatDate";
+import { BaseLayout } from "src/components/layout/BaseLayout";
 
 const BlogId: VFC<any> = ({ blog }) => {
   return (
-    <main>
+    <BaseLayout>
       <h1>{blog.title}</h1>
       <p>{formatDate(blog.publishedAt)}</p>
       <p>{blog.category.name}</p>
@@ -16,15 +17,15 @@ const BlogId: VFC<any> = ({ blog }) => {
       />
       <p>{blog.writer.name}</p>
       <Link href="/">
-        <a>ホーム</a>
+        <a>記事一覧へ</a>
       </Link>
-    </main>
+    </BaseLayout>
   );
 };
 
 export default BlogId;
 
-// 静的生成のためのパスを指定します
+// 静的生成のためのパスを指定
 export const getStaticPaths = async () => {
   const data: any = await client.get({ endpoint: "articles" });
 
@@ -32,7 +33,7 @@ export const getStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-// データをテンプレートに受け渡す部分の処理を記述します
+// データをテンプレートに受け渡す部分の処理
 export const getStaticProps = async (context: any) => {
   const id = context.params.id;
   const data = await client.get({ endpoint: "articles", contentId: id });
