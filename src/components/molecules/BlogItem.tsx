@@ -22,12 +22,14 @@ export const BlogItem: VFC<Props> = (props) => {
 
         <Category>{blog.category.name}</Category>
 
+        <br />
+
         <Detail>
           <TimeIcon />
           <span>{formatDate(blog.publishedAt)}</span>
         </Detail>
 
-        <SpaceY />
+        {/* <SpaceY /> */}
 
         <Detail>
           <WriterIcon />
@@ -37,6 +39,16 @@ export const BlogItem: VFC<Props> = (props) => {
     </Container>
   );
 };
+
+const Detail = styled("span", {
+  "& svg": {
+    verticalAlign: "text-bottom",
+  },
+  "& span": {
+    fontSize: "16px",
+    paddingLeft: "0.5rem",
+  },
+});
 
 const Container = styled("div", {
   paddingY: "1rem",
@@ -51,6 +63,10 @@ const Container = styled("div", {
   "& div:last-child": {
     marginLeft: "2rem",
   },
+
+  [`& ${Detail}+${Detail}`]: {
+    marginLeft: "1rem",
+  },
 });
 
 const Category = styled("p", {
@@ -60,18 +76,4 @@ const Category = styled("p", {
   display: "inline-block",
   padding: "0.2rem 0.5rem",
   margin: "1rem 0",
-});
-
-const Detail = styled("p", {
-  "& svg": {
-    verticalAlign: "text-bottom",
-  },
-  "& span": {
-    fontSize: "16px",
-    paddingLeft: "0.5rem",
-  },
-});
-
-const SpaceY = styled("div", {
-  paddingY: "0.2rem",
 });
