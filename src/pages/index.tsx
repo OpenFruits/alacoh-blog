@@ -21,6 +21,7 @@ const Home: NextPage<any> = (props) => {
   return (
     <BaseLayout>
       <List>
+        <p>記事一覧</p>
         {props.data.contents.map((blog: any) => (
           <li key={blog.id}>
             <AnchorLink href={`/blog/${blog.id}`}>
