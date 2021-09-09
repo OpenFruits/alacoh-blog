@@ -1,24 +1,27 @@
 import { VFC } from "react";
-import Link from "next/link";
+import Image from "next/image";
 import { client } from "src/libs/client";
 import { formatDate } from "src/libs/formatDate";
 import { BaseLayout } from "src/components/layout/BaseLayout";
+import { TitleArea } from "src/components/article/TitleArea";
+import { Body } from "src/components/article/Body";
+import { Breadcrumb } from "src/components/article/Breadcrumb";
 
 const BlogId: VFC<any> = ({ blog }) => {
   return (
     <BaseLayout>
-      <h1>{blog.title}</h1>
-      <p>{formatDate(blog.publishedAt)}</p>
-      <p>{blog.category.name}</p>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `${blog.body}`,
-        }}
+      <Image src={blog.ogimage.url} alt="Picture" width={768} height={400} />
+
+      <Breadcrumb category={blog.category.name} />
+
+      <TitleArea
+        title={blog.title}
+        category={blog.category.name}
+        publishedAt={formatDate(blog.publishedAt)}
+        author={blog.writer.name}
       />
-      <p>{blog.writer.name}</p>
-      <Link href="/">
-        <a>記事一覧へ</a>
-      </Link>
+
+      <Body html={blog.body} />
     </BaseLayout>
   );
 };
