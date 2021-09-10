@@ -4,9 +4,10 @@ import { formatDate } from "src/libs/formatDate";
 import { styled } from "src/styles/stitches.config";
 import { WriterIcon } from "../icon/WriterIcon";
 import { TimeIcon } from "../icon/TimeIcon";
+import { BlogResponse } from "src/types/blog";
 
 type Props = {
-  blog: any;
+  blog: BlogResponse;
 };
 
 export const BlogItem: VFC<Props> = (props) => {
@@ -21,15 +22,12 @@ export const BlogItem: VFC<Props> = (props) => {
         <h2>{blog.title}</h2>
 
         <Category>{blog.category.name}</Category>
-
         <br />
 
         <Detail>
           <TimeIcon />
           <span>{formatDate(blog.publishedAt)}</span>
         </Detail>
-
-        {/* <SpaceY /> */}
 
         <Detail>
           <WriterIcon />
