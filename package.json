@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier": "prettier --check .",
+    "fix:lint": "next lint --fix",
+    "fix:prettier": "prettier --write ."
   },
   "prettier": {
     "printWidth": 120
