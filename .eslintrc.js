@@ -60,6 +60,10 @@ module.exports = {
   },
   overrides: [
     {
+      files: ["src/pages/**/*.tsx"],
+      rules: { "import/no-default-export": "off" },
+    },
+    {
       files: ["next.config.js", "src/pages/**/*.tsx", "src/pages/api/**/*.ts", "src/type/**/*.d.ts"],
       rules: {
         "@typescript-eslint/naming-convention": [
