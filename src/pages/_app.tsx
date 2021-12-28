@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = (props: AppProps) => {
   return (
     <>
       <Head>
@@ -10,8 +10,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <props.Component {...props.pageProps} />
     </>
   );
-}
+};
 export default MyApp;

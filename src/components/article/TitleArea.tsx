@@ -1,7 +1,8 @@
-import { VFC } from "react";
-import { WriterIcon } from "../icon/WriterIcon";
-import { TimeIcon } from "../icon/TimeIcon";
+import type { VFC } from "react";
 import { styled } from "src/styles/stitches.config";
+
+import { TimeIcon } from "../icon/TimeIcon";
+import { WriterIcon } from "../icon/WriterIcon";
 
 type Props = {
   title: string;

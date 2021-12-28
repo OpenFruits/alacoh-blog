@@ -3,7 +3,8 @@ import { BaseLayout } from "src/components/layout/BaseLayout";
 import { BlogItem } from "src/components/molecules/BlogItem";
 import { AnchorLink } from "src/components/shared/AnchorLink";
 import { styled } from "src/styles/stitches.config";
-import { BlogListResponse, BlogResponse } from "src/types/blog";
+import type { BlogListResponse, BlogResponse } from "src/types/blog";
+
 import { client } from "../libs/client";
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -24,14 +25,16 @@ const Home: NextPage<{ data: BlogListResponse }> = (props) => {
   return (
     <BaseLayout>
       <List>
-        <p>記事一覧</p>
-        {contents?.map((blog: BlogResponse) => (
-          <li key={blog.id}>
-            <AnchorLink href={`/blog/${blog.id}`}>
-              <BlogItem blog={blog} />
-            </AnchorLink>
-          </li>
-        ))}
+        <p>{`記事一覧:${totalCount}件`}</p>
+        {contents?.map((blog: BlogResponse) => {
+          return (
+            <li key={blog.id}>
+              <AnchorLink href={`/blog/${blog.id}`}>
+                <BlogItem blog={blog} />
+              </AnchorLink>
+            </li>
+          );
+        })}
       </List>
     </BaseLayout>
   );

@@ -1,4 +1,4 @@
-import type { ListContentsResponse, ContentResponse } from "./api";
+import type { ContentResponse, ListContentsResponse } from "./api";
 
 export type BlogListResponse = ListContentsResponse<BlogResponse>;
 

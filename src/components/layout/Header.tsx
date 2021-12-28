@@ -1,6 +1,7 @@
-import { VFC } from "react";
 import Image from "next/image";
+import type { VFC } from "react";
 import { styled } from "src/styles/stitches.config";
+
 import { AnchorLink } from "../shared/AnchorLink";
 
 const NAV_ITEMS: { href: string; label: string }[] = [
@@ -14,24 +15,21 @@ export const Header: VFC = () => {
     <Container>
       <AnchorLink href="/">
         <HeaderLeft>
-          <Image
-            src="/logo.png"
-            width={56}
-            height={56}
-            alt="ブランドロゴ画像"
-          />
+          <Image src="/logo.png" width={56} height={56} alt="ブランドロゴ画像" />
           <H1>Alacoh Blog</H1>
         </HeaderLeft>
       </AnchorLink>
 
       <Nav>
-        {NAV_ITEMS.map((item) => (
-          <li key={item.label}>
-            <AnchorLink href={item.href}>
-              <h2>{item.label}</h2>
-            </AnchorLink>
-          </li>
-        ))}
+        {NAV_ITEMS.map((item) => {
+          return (
+            <li key={item.label}>
+              <AnchorLink href={item.href}>
+                <h2>{item.label}</h2>
+              </AnchorLink>
+            </li>
+          );
+        })}
       </Nav>
     </Container>
   );

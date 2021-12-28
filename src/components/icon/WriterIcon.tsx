@@ -1,14 +1,8 @@
-import { VFC } from "react";
+import type { VFC } from "react";
 
 export const WriterIcon: VFC = () => {
   return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 48 48"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="20" height="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="48" height="48" fill="white" fillOpacity="0.01" />
       <path
         d="M24 20C27.866 20 31 16.866 31 13C31 9.13401 27.866 6 24 6C20.134 6 17 9.13401 17 13C17 16.866 20.134 20 24 20Z"

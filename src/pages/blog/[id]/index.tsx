@@ -1,14 +1,17 @@
+import type { GetStaticPropsContext, NextPage } from "next";
 import Image from "next/image";
-import { client } from "src/libs/client";
-import { formatDate } from "src/libs/formatDate";
-import { BaseLayout } from "src/components/layout/BaseLayout";
-import { TitleArea } from "src/components/article/TitleArea";
 import { Body } from "src/components/article/Body";
 import { Breadcrumb } from "src/components/article/Breadcrumb";
-import { BlogListResponse, BlogResponse } from "src/types/blog";
-import { GetStaticPropsContext, NextPage } from "next";
+import { TitleArea } from "src/components/article/TitleArea";
+import { BaseLayout } from "src/components/layout/BaseLayout";
+import { client } from "src/libs/client";
+import { formatDate } from "src/libs/formatDate";
+import type { BlogListResponse, BlogResponse } from "src/types/blog";
 
-const BlogId: NextPage<{ blog: BlogResponse }> = ({ blog }) => {
+const BlogId: NextPage<{ blog: BlogResponse }> = (props) => {
+  // eslint-disable-next-line react/destructuring-assignment
+  const { blog } = props;
+
   return (
     <BaseLayout>
       <Image src={blog.ogimage.url} alt="Picture" width={768} height={400} />
@@ -33,9 +36,9 @@ export default BlogId;
 export const getStaticPaths = async () => {
   const data: BlogListResponse = await client.get({ endpoint: "articles" });
 
-  const paths = data.contents.map(
-    (content: BlogResponse) => `/blog/${content.id}`
-  );
+  const paths = data.contents.map((content: BlogResponse) => {
+    return `/blog/${content.id}`;
+  });
   return { paths, fallback: false };
 };
 

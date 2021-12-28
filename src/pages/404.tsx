@@ -1,4 +1,4 @@
-import { VFC } from "react";
+import type { VFC } from "react";
 
 const Custom404: VFC = () => {
   return (

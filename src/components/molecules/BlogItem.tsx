@@ -1,16 +1,18 @@
-import { VFC } from "react";
 import Image from "next/image";
+import type { VFC } from "react";
 import { formatDate } from "src/libs/formatDate";
 import { styled } from "src/styles/stitches.config";
-import { WriterIcon } from "../icon/WriterIcon";
+import type { BlogResponse } from "src/types/blog";
+
 import { TimeIcon } from "../icon/TimeIcon";
-import { BlogResponse } from "src/types/blog";
+import { WriterIcon } from "../icon/WriterIcon";
 
 type Props = {
   blog: BlogResponse;
 };
 
 export const BlogItem: VFC<Props> = (props) => {
+  // eslint-disable-next-line react/destructuring-assignment
   const { blog } = props;
 
   return (

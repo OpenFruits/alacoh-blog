@@ -2,15 +2,7 @@ import { createStitches } from "@stitches/react";
 import { colors } from "./colors";
 import { utils } from "./utils";
 
-export const {
-  styled,
-  css,
-  globalCss,
-  keyframes,
-  getCssText,
-  createTheme,
-  theme,
-} = createStitches({
+export const { styled, css, globalCss, keyframes, getCssText, createTheme, theme } = createStitches({
   utils,
   media: {},
   theme: {

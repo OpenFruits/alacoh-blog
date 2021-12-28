@@ -1,5 +1,6 @@
-import { VFC } from "react";
+import type { VFC } from "react";
 import { styled } from "src/styles/stitches.config";
+
 import { AnchorLink } from "../shared/AnchorLink";
 
 const NAV_ITEMS: { href: string; label: string }[] = [
@@ -13,11 +14,13 @@ export const Footer: VFC = () => {
     <Container>
       <Foo>
         <Nav>
-          {NAV_ITEMS.map((item) => (
-            <li key={item.label}>
-              <AnchorLink href={item.href}>{item.label}</AnchorLink>
-            </li>
-          ))}
+          {NAV_ITEMS.map((item) => {
+            return (
+              <li key={item.label}>
+                <AnchorLink href={item.href}>{item.label}</AnchorLink>
+              </li>
+            );
+          })}
         </Nav>
         <small lang="en">&copy; 2021 Alacoh</small>
       </Foo>
